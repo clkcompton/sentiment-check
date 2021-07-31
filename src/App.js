@@ -4,14 +4,15 @@ import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import vader from 'vader-sentiment';
 import React, {useState} from 'react';
+import fetchSynonym from './utils/wordAPIService';
 import './App.css';
-
 
 
 function App() {
   const [userInput, setUserInput] = useState('');
   const [sentimentScore, setSentimentScore] = useState('');
-
+  const [synonym, setSynonym] = useState([])
+  
   const findSentimentScore = () => {
     const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(userInput);
     setSentimentScore(intensity.compound);
@@ -21,11 +22,18 @@ function App() {
     setUserInput(event.target.value);
   }
 
+  const findSynonym = () => {
+    fetchSynonym(userInput).then((value) => {
+      setSynonym(value.data);
+      console.log('Synonym', synonym);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         
-        <Form className="textForm">
+      <Form className="textForm">
           <Form.Group className="mb-3" controlId="formTextarea">
             {/* <Form.Label className="formLabel">What would you like to say?</Form.Label> */}
             <Form.Control as='textarea' size="lg" value={userInput} onChange={handleChange} placeholder="What's happening?"></Form.Control>
