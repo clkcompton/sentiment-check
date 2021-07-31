@@ -1,0 +1,12 @@
+.mainNavBar{
+  background-color: #E1E8ED;
+}
+
+.navBrandText {
+  padding: 6px;
+  padding-left: 20px;
+  color: #657786;
+  font-size: x-large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}

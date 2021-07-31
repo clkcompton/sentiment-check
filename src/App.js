@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import { NavBar } from './navigation/NavBar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <header className="App-header">
         
         <Form className="textForm">
