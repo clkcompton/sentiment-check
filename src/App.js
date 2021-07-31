@@ -1,4 +1,7 @@
 import logo from './logo.svg';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import vader from 'vader-sentiment';
 import React, {useState} from 'react';
 import './App.css';
@@ -22,12 +25,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         
- 
-        <input value={userInput} onChange={handleChange} placeholder="Type Here"></input>
-        <button onClick={findSentimentScore}>Submit</button>
+        <Form className="textForm">
+          <Form.Group className="mb-3" controlId="formTextarea">
+            {/* <Form.Label className="formLabel">What would you like to say?</Form.Label> */}
+            <Form.Control as='textarea' size="lg" value={userInput} onChange={handleChange} placeholder="What's happening?"></Form.Control>
+          </Form.Group>
+          <Button className="formSubmitButton" variant="primary" onClick={findSentimentScore}>Submit</Button>
+        </Form>
         <p>
-          {sentimentScore}
-          {console.log(userInput)}
+            {sentimentScore}
+            {console.log(userInput)}
         </p>
       </header>
     </div>
