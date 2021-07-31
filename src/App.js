@@ -1,5 +1,12 @@
 import logo from './logo.svg';
+import vader from 'vader-sentiment';
 import './App.css';
+
+function test() {
+  const input = 'carrot';
+  const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
+  return JSON.stringify(intensity);
+}
 
 function App() {
   return (
@@ -7,7 +14,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {test()}
         </p>
         <a
           className="App-link"
