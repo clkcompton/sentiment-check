@@ -7,11 +7,11 @@ import './App.css';
 
 function App() {
   const [userInput, setUserInput] = useState('');
+  const [sentimentScore, setSentimentScore] = useState('');
 
-  const test = () => {
-    const input = 'carrot';
-    const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
-    return JSON.stringify(intensity);
+  const findSentimentScore = () => {
+    const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(userInput);
+    setSentimentScore(intensity.compound);
   }
 
   const handleChange = (event) => {
@@ -24,8 +24,9 @@ function App() {
         
  
         <input value={userInput} onChange={handleChange} placeholder="Type Here"></input>
+        <button onClick={findSentimentScore}>Submit</button>
         <p>
-          {test()}
+          {sentimentScore}
           {console.log(userInput)}
         </p>
       </header>
