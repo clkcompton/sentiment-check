@@ -1,29 +1,33 @@
 import logo from './logo.svg';
 import vader from 'vader-sentiment';
+import React, {useState} from 'react';
 import './App.css';
 
-function test() {
-  const input = 'carrot';
-  const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
-  return JSON.stringify(intensity);
-}
+
 
 function App() {
+  const [userInput, setUserInput] = useState('');
+
+  const test = () => {
+    const input = 'carrot';
+    const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(input);
+    return JSON.stringify(intensity);
+  }
+
+  const handleChange = (event) => {
+    setUserInput(event.target.value);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
+ 
+        <input value={userInput} onChange={handleChange} placeholder="Type Here"></input>
         <p>
           {test()}
+          {console.log(userInput)}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
