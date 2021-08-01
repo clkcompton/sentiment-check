@@ -10,7 +10,7 @@ import findWordColor from '../utils/wordHexCalculator';
 export class Results extends React.Component {
 
   findSynonym = () => {
-    fetchSynonym(this.props.userInput).then((value) => {
+    fetchSynonym(this.props.message).then((value) => {
       this.props.setSynonym(value.data);
       console.log('Synonym', this.props.synonym);
     });
@@ -20,10 +20,12 @@ export class Results extends React.Component {
     return (
       <Card className='resultsTextArea'>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          {console.log('message', this.props.message.length)}
+          <Card.Title>{this.props.message.length === 0 ? "Enter a message!" : "Your results:"}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            {this.props.message}
+            <br/>
+            {this.props.sentimentScore}
           </Card.Text>
         </Card.Body>
         <button onClick={() => findWordColor(this.props.sentimentScore)}>

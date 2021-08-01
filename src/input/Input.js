@@ -6,6 +6,12 @@ import './Input.css';
 
 
 export class Input extends React.Component {
+
+  submitMessage = () => {
+    this.props.setMessage(this.props.userInput);
+    this.props.calculateSentimentScore();
+  }
+
   render() {
     return(
       <div>
@@ -20,7 +26,13 @@ export class Input extends React.Component {
                 placeholder="What's happening?">
               </Form.Control>
             </Form.Group>
-            <Button className="formSubmitButton" variant="primary" onClick={this.props.calculateSentimentScore}>Submit</Button>
+            <Button 
+              className="formSubmitButton"
+              variant="primary"
+              onClick={this.submitMessage}
+            >
+              Submit
+            </Button>
             {/* <Button className="formSubmitButton" variant="primary" onClick={findSynonym}>Synonize</Button> */}
         </Form>
       </div>

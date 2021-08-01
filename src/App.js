@@ -10,7 +10,8 @@ import './App.css';
 
 function App() {
   const [userInput, setUserInput] = useState('');
-  const [sentimentScore, setSentimentScore] = useState(1);
+  const [message, setMessage] = useState('');
+  const [sentimentScore, setSentimentScore] = useState('');
   const [synonym, setSynonym] = useState([])
   
   const calculateSentimentScore = () => {
@@ -27,26 +28,21 @@ function App() {
       <NavBar testFunction={setUserInput}/>
       <header className="App-header">
 
-        <Input 
+        <Input
+          setMessage={setMessage}
           userInput={userInput}
           handleInputChange={handleInputChange} 
           calculateSentimentScore={calculateSentimentScore}
         />
       
         <Results 
-          userInput={userInput}
+          message={message}
           setSynonym={setSynonym}
           synonym={synonym}
-          handleInputChange={handleInputChange}
+          setMessage={setMessage}
           calculateSentimentScore={calculateSentimentScore}
           sentimentScore={sentimentScore}
         />
-
-        <p>
-            {userInput}
-            {console.log(userInput)}
-        </p>
-
       </header>
     </div>
   );
