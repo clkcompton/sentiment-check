@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Input.css';
+
 
 export class Input extends React.Component {
   render() {
@@ -18,7 +20,7 @@ export class Input extends React.Component {
                 placeholder="What's happening?">
               </Form.Control>
             </Form.Group>
-            <Button className="formSubmitButton" variant="primary" onClick={this.props.findSentimentScore}>Submit</Button>
+            <Button className="formSubmitButton" variant="primary" onClick={this.props.calculateSentimentScore}>Submit</Button>
             {/* <Button className="formSubmitButton" variant="primary" onClick={findSynonym}>Synonize</Button> */}
         </Form>
       </div>

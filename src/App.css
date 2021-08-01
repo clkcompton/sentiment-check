@@ -6,39 +6,10 @@
   background-color: #1DA1F2;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.textForm {
-  background-color: #F5F8FA;
-  border-width: thick;
-  border-color: #F5F8FA;
-  border-style: solid;
-  border-radius: 10px;
-  padding: 15px;
-  width: 600px;
-  margin: 50px;
-}
 
-.formLabel {
-  font-size: medium;
-  color: #1DA1F2;
-}
-
-.formTextarea {
-  height: 900px;
-}
-
-.formSubmitButton {
-  padding-left: 11px;
-  padding-right: 11px;
-  font-size: medium;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  background-color: #1DA1F2;
-  border-radius: 20px;
-}

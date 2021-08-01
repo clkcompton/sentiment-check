@@ -1,0 +1,26 @@
+.textForm {
+  background-color: #F5F8FA;
+  border-radius: 10px;
+  padding: 15px;
+  width: 500px;
+  margin: 50px;
+}
+
+.formLabel {
+  font-size: medium;
+  color: #1DA1F2;
+}
+
+.formTextarea {
+  height: 900px;
+}
+
+.formSubmitButton {
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #1DA1F2;
+  border-radius: 20px;
+}
