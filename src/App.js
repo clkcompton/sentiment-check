@@ -56,6 +56,8 @@ function App() {
         />
       
         <Results 
+          userInput={userInput}
+          setUserInput={setUserInput}
           messageData={messageData}
           message={message}
           setSynonym={setSynonym}
