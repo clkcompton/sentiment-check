@@ -43,12 +43,12 @@ const findWordColor = (sentimentScore) => {
     g = neutral['G'] + ((negativeDiff['G'] / numSteps) * (numSteps * -sentimentScore));
     b = neutral['B'] + ((negativeDiff['B'] / numSteps) * (numSteps * -sentimentScore));
   }
-  console.log('#' + String(Math.round(r).toString(16)).padStart(2, '0') + 
+  console.log("HEX COLOR", '#' + String(Math.round(r).toString(16)).padStart(2, '0') + 
   String(Math.round(g).toString(16)).padStart(2, '0') + 
   String(Math.round(b).toString(16)).padStart(2, '0'))
-  // return '#' + String(Math.round(r).toString(16)).padStart(2, '0') + 
-  //               String(Math.round(g).toString(16)).padStart(2, '0') + 
-  //               String(Math.round(b).toString(16)).padStart(2, '0');
+  return '#' + String(Math.round(r).toString(16)).padStart(2, '0') + 
+                String(Math.round(g).toString(16)).padStart(2, '0') + 
+                String(Math.round(b).toString(16)).padStart(2, '0');
 }  
 
 export default findWordColor;

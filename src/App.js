@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import vader from 'vader-sentiment';
 import React, {useState} from 'react';
 import './App.css';
+import findWordColor from './utils/wordHexCalculator';
 
 
 function App() {
@@ -13,10 +14,12 @@ function App() {
   const [message, setMessage] = useState('');
   const [sentimentScore, setSentimentScore] = useState('');
   const [synonym, setSynonym] = useState([])
+  const [hexColor, setHexColor] = useState('');
   
   const calculateSentimentScore = () => {
     const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(userInput);
     setSentimentScore(intensity.compound);
+    setHexColor(findWordColor(intensity.compound));
   }
 
   const handleInputChange = (event) => {
@@ -37,6 +40,7 @@ function App() {
       
         <Results 
           message={message}
+          hexColor={hexColor}
           setSynonym={setSynonym}
           synonym={synonym}
           setMessage={setMessage}
