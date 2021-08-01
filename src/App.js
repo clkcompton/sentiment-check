@@ -13,7 +13,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [message, setMessage] = useState('');
   const [sentenceSentimentScore, setSentenceSentimentScore] = useState('');
-  const [synonym, setSynonym] = useState([])
+  const [synonym, setSynonym] = useState({})
   const [messageData, setMessageData] = useState([]);
   
   const calculateSentimentScore = (text) => {
