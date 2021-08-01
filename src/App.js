@@ -12,40 +12,57 @@ import findWordColor from './utils/wordHexCalculator';
 function App() {
   const [userInput, setUserInput] = useState('');
   const [message, setMessage] = useState('');
-  const [sentimentScore, setSentimentScore] = useState('');
+  const [sentenceSentimentScore, setSentenceSentimentScore] = useState('');
   const [synonym, setSynonym] = useState([])
-  const [hexColor, setHexColor] = useState('');
+  const [messageData, setMessageData] = useState([]);
   
-  const calculateSentimentScore = () => {
-    const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(userInput);
-    setSentimentScore(intensity.compound);
-    setHexColor(findWordColor(intensity.compound));
+  const calculateSentimentScore = (text) => {
+    const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(text);
+    return intensity.compound;
   }
-
+  
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
+  }
+  
+  const submitMessage = () => {
+    deconstructMessage();
+    setMessage(userInput);
+    setSentenceSentimentScore(calculateSentimentScore(userInput));
+  }
+  
+  const deconstructMessage = () => {
+    const wordArr = userInput.split(" ");
+    const wordDataArr = wordArr.map(word => {
+      const wordSentimentScore= calculateSentimentScore(word)
+      return {
+        word: word,
+        sentimentValue: wordSentimentScore,
+        hexColor: findWordColor(wordSentimentScore)
+      }
+    }) 
+    setMessageData(wordDataArr);
   }
 
   return (
     <div className="App">
-      <NavBar testFunction={setUserInput}/>
+      <NavBar />
       <header className="App-header">
 
         <Input
-          setMessage={setMessage}
+          submitMessage={submitMessage}
           userInput={userInput}
           handleInputChange={handleInputChange} 
-          calculateSentimentScore={calculateSentimentScore}
         />
       
         <Results 
+          messageData={messageData}
           message={message}
-          hexColor={hexColor}
           setSynonym={setSynonym}
           synonym={synonym}
           setMessage={setMessage}
           calculateSentimentScore={calculateSentimentScore}
-          sentimentScore={sentimentScore}
+          sentenceSentimentScore={sentenceSentimentScore}
         />
       </header>
     </div>

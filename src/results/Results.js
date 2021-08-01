@@ -13,17 +13,26 @@ export class Results extends React.Component {
     });
   }
 
+  displayMessageData = () => {
+    return (
+      this.props.messageData.map((element, index) => {
+        return (
+          <span key={index} style={{backgroundColor: element.hexColor}}>
+            {element.word + " "}
+          </span>
+        )
+      })
+    )
+  }
+
   render() {
     return (
       <Card className='resultsTextArea'>
         <Card.Body>
           <Card.Title>{this.props.message.length === 0 ? "Enter a message!" : "Your results:"}</Card.Title>
           <Card.Text>
-            <span style={{backgroundColor: this.props.hexColor}}>
-              {this.props.message}
-            </span>
+            {this.displayMessageData()}
             <br/>
-            {this.props.sentimentScore}
           </Card.Text>
         </Card.Body>
       </Card>

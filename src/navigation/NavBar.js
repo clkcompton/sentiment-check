@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar'
 import './NavBar.css';
-import { Container } from 'react-bootstrap';
 
 export class NavBar extends React.Component {
   render() {

@@ -7,10 +7,7 @@ import './Input.css';
 
 export class Input extends React.Component {
 
-  submitMessage = () => {
-    this.props.setMessage(this.props.userInput);
-    this.props.calculateSentimentScore();
-  }
+
 
   render() {
     return(
@@ -29,7 +26,7 @@ export class Input extends React.Component {
             <Button 
               className="formSubmitButton"
               variant="primary"
-              onClick={this.submitMessage}
+              onClick={this.props.submitMessage}
             >
               Submit
             </Button>
