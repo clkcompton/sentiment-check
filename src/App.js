@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import { NavBar } from './navigation/NavBar';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import vader from 'vader-sentiment';
 import React, {useState} from 'react';
 import fetchSynonym from './utils/wordAPIService';
 import './App.css';
+import {Input} from './input/Input';
 
 
 function App() {
@@ -14,15 +13,17 @@ function App() {
   const [sentimentScore, setSentimentScore] = useState('');
   const [synonym, setSynonym] = useState([])
   
+  //can live in results
   const findSentimentScore = () => {
     const intensity = vader.SentimentIntensityAnalyzer.polarity_scores(userInput);
     setSentimentScore(intensity.compound);
   }
 
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
     setUserInput(event.target.value);
   }
 
+  //can live in results
   const findSynonym = () => {
     fetchSynonym(userInput).then((value) => {
       setSynonym(value.data);
@@ -32,16 +33,15 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar testFunction={setUserInput}/>
       <header className="App-header">
-        
-      <Form className="textForm">
-          <Form.Group className="mb-3" controlId="formTextarea">
-            {/* <Form.Label className="formLabel">What would you like to say?</Form.Label> */}
-            <Form.Control as='textarea' size="lg" value={userInput} onChange={handleChange} placeholder="What's happening?"></Form.Control>
-          </Form.Group>
-          <Button className="formSubmitButton" variant="primary" onClick={findSentimentScore}>Submit</Button>
-        </Form>
+
+        <Input 
+          userInput={userInput}
+          handleInputChange={handleInputChange} 
+          findSentimentScore={findSentimentScore}
+        />
+      
         <p>
             {sentimentScore}
             {console.log(userInput)}
